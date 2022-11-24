@@ -1,6 +1,10 @@
+---
+to: pages/<%= h.changeCase.camel(pageName) %>.vue
+---
+
 <template>
-  <div id="index">
-    index
+  <div id="<%= h.changeCase.camel(pageName)  %>">
+    <%= h.changeCase.camel(pageName)  %>
   </div>
 </template>
 
@@ -19,12 +23,12 @@
 
 /* -- life cycle -- */
 definePageMeta({
-  title: 'Index'
+  title: '<%= title %>'
 })
 </script>
 
 <style lang="scss" scoped>
-#index {
+#<%= h.changeCase.camel(pageName)  %> {
 
 }
 </style>

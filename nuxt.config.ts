@@ -5,7 +5,15 @@ export default defineNuxtConfig({
   ssr: false,
 
   modules: [
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+          'defineStore'
+        ]
+      }
+    ]
   ],
 
   components: {
@@ -18,9 +26,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: [
       'composables',
-      'composables/*/+.{ts,js,mjs,mts}',
+      'composables/**/*.{ts,js,mjs,mts}',
       'utils',
-      'utils/*/*.{ts,js,mjs,mts}'
+      'utils/**/*.{ts,js,mjs,mts}'
     ]
   },
 
@@ -103,8 +111,8 @@ export default defineNuxtConfig({
           start_url: '/',
           display: 'standalone',
           background_color: '#FCFCF9',
-          theme_color: '#FCFCF9',
-          icons: [
+          theme_color: '#FCFCF9'
+          /* icons: [
             {
               src: '/icons/icon_64.png',
               type: 'image/png',
@@ -147,7 +155,7 @@ export default defineNuxtConfig({
               sizes: '512x512',
               purpose: 'any'
             }
-          ]
+          ] */
         }
       })
     ]
