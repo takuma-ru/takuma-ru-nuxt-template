@@ -1,3 +1,7 @@
+const AutoImport = require('unplugin-auto-import/vite')
+const Components = require('unplugin-vue-components/vite')
+const path = require('path')
+
 module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
@@ -20,21 +24,52 @@ module.exports = {
   viteFinal: async (config) => {
     config.plugins = [
       ...config.plugins,
-      require('unplugin-auto-import/vite')({
-        include: [
-          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-          /\.vue$/, /\.vue\?vue/, // .vue
-          /\.md$/, // .md
-        ],
-
+      AutoImport({
         imports: [
           'vue',
           '@vueuse/core',
           'pinia'
-        ]
-      })
+        ],
+        dts: '.storybook/types/auto-imports.d.ts',
+      }),
+      AutoImport({
+        dirs: [
+          'composables',
+          'composables/**/*.{ts,js,mjs,mts}',
+        ],
+        vueTemplate: true,
+        dts: '.storybook/types/composables.d.ts',
+      }),
+      AutoImport({
+        dirs: [
+          'utils',
+          'utils/**/*.{ts,js,mjs,mts}'
+        ],
+        vueTemplate: true,
+        dts: '.storybook/types/utils.d.ts',
+      }),
+      Components({
+        dirs: [
+          'components/layouts/*/',
+          'components/utils/*/'
+        ],
+        deep: true,
+        directoryAsNamespace: true,
+        extensions: ['vue'],
+        dts: '.storybook/types/components.d.ts',
+      }),
     ]
 
-    return config
+    return {
+      ...config,
+      /* resolve: {
+        alias: [
+          {
+            find: "~",
+            replacement: path.resolve(__dirname, "../"),
+          }
+        ],
+      }, */
+    }
   }
 }
