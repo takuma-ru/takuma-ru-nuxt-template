@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<IIconProps>(), {
   size: '24px',
   color: undefined,
   fill: false,
-  wght: 700,
+  wght: 600,
   grad: 0,
   opsz: 48
 })

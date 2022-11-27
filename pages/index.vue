@@ -5,7 +5,7 @@
     {{ pc }}
     {{ displayType }}
     <Button icon="face">
-      Button
+      テストボタン
     </Button>
   </div>
 </template>
