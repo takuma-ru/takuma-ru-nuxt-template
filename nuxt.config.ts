@@ -45,8 +45,10 @@ export default defineNuxtConfig({
     dirs: [
       'composables',
       'composables/**/*.{ts,js,mjs,mts}',
+      'composables/**',
       'utils',
-      'utils/**/*.{ts,js,mjs,mts}'
+      'utils/**/*.{ts,js,mjs,mts}',
+      'utils/**'
     ]
   },
 
@@ -105,57 +107,64 @@ export default defineNuxtConfig({
         includeAssets: [ 'icon_rounded.png', 'apple_touch_icon.png', 'masked_icon.svg' ],
         manifest: {
           lang: 'ja',
-          name: 'IoT Compost Toilet',
-          short_name: 'ComToile',
+          name: 'title',
+          short_name: 'title',
           description: '',
           start_url: '/',
           display: 'standalone',
           background_color: '#FCFCF9',
-          theme_color: '#FCFCF9'
-          /* icons: [
-            {
-              src: '/icons/icon_64.png',
+          theme_color: '#FCFCF9',
+          icons: [
+            /* {
+              src: '/icons/icon-72x72.png',
               type: 'image/png',
-              sizes: '64x64',
+              sizes: '72x72',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_120.png',
+              src: '/icons/icon-128x128.png',
               type: 'image/png',
-              sizes: '120x120',
+              sizes: '128x128',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_144.png',
+              src: '/icons/icon-144x144.png',
               type: 'image/png',
               sizes: '144x144',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_152.png',
+              src: '/icons/icon-152x152.png',
               type: 'image/png',
               sizes: '152x152',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_192.png',
+              src: '/icons/icon-192x192.png',
               type: 'image/png',
               sizes: '192x192',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_384.png',
+              src: '/icons/icon-384x384.png',
               type: 'image/png',
               sizes: '384x384',
               purpose: 'any'
             },
             {
-              src: '/icons/icon_512.png',
+              src: '/icons/icon-512x512.png',
               type: 'image/png',
               sizes: '512x512',
               purpose: 'any'
-            }
-          ] */
+            } */
+          ],
+          screenshots: [
+            /* {
+              src: '/screenshots/dashboard-screenshot.png',
+              sizes: '512x962',
+              type: 'image/gif'
+            } */
+          ]
         }
       })
     ]

@@ -1,6 +1,6 @@
 <template>
-  <div id="dashboard">
-    dashboard
+  <div id="colorModeButton">
+    colorModeButton
   </div>
 </template>
 
@@ -10,7 +10,6 @@
 /* -- store -- */
 
 /* -- props, emit -- */
-
 /* -- variable(ref, reactive, computed) -- */
 
 /* -- function -- */
@@ -18,13 +17,10 @@
 /* -- watch -- */
 
 /* -- life cycle -- */
-definePageMeta({
-  title: 'Dashboard'
-})
 </script>
 
 <style lang="scss" scoped>
-#dashboard {
+#colorModeButton {
 
 }
 </style>
