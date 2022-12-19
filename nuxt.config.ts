@@ -53,6 +53,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@kevinmarrec/nuxt-pwa',
     '@vueuse/nuxt',
     [
       '@pinia/nuxt',
@@ -63,6 +64,73 @@ export default defineNuxtConfig({
       }
     ]
   ],
+
+  pwa: {
+    workbox: {
+      autoRegister: true
+    },
+    manifest: {
+      lang: 'ja',
+      name: 'title',
+      short_name: 'title',
+      description: '',
+      start_url: '/',
+      display: 'standalone',
+      background_color: '#FCFCF9',
+      theme_color: '#FCFCF9',
+      icons: [
+        /* {
+          src: '/icons/icon-72x72.png',
+          type: 'image/png',
+          sizes: '72x72',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-128x128.png',
+          type: 'image/png',
+          sizes: '128x128',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-144x144.png',
+          type: 'image/png',
+          sizes: '144x144',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-152x152.png',
+          type: 'image/png',
+          sizes: '152x152',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-192x192.png',
+          type: 'image/png',
+          sizes: '192x192',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-384x384.png',
+          type: 'image/png',
+          sizes: '384x384',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-512x512.png',
+          type: 'image/png',
+          sizes: '512x512',
+          purpose: 'any'
+        } */
+      ],
+      screenshots: [
+        /* {
+          src: '/screenshots/dashboard-screenshot.png',
+          sizes: '512x962',
+          type: 'image/gif'
+        } */
+      ]
+    }
+  },
 
   vite: {
     plugins: [
