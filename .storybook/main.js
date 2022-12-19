@@ -28,7 +28,12 @@ module.exports = {
         imports: [
           'vue',
           '@vueuse/core',
-          'pinia'
+          'pinia',
+          {
+            'nuxt': [
+              'useRoute'
+            ]
+          }
         ],
         dts: '.storybook/types/auto-imports.d.ts',
       }),
@@ -51,7 +56,8 @@ module.exports = {
       Components({
         dirs: [
           'components/layouts/*/',
-          'components/utils/*/'
+          'components/utils/*/',
+          'components/*/*/'
         ],
         deep: true,
         directoryAsNamespace: true,

@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import 'material-symbols'
 import { registerSW } from 'virtual:pwa-register'
 
 registerSW()
