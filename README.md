@@ -87,5 +87,5 @@ yarn preview
 
 ----
 
-<!-- I would appreciate it if you would not delete this statement -->
+<!-- I would appreciate it if you would not delete this statement: 4E9CD6B9-0413-7337-0E02-541E600758D5 -->
 **This template was created by [@takuma-ru/takuma-ru-nuxt-template](https://github.com/takuma-ru/takuma-ru-nuxt-template)**
