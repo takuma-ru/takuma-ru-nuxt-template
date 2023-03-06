@@ -7,11 +7,22 @@
 Template repository for developing web applications etc. with nuxt3.
 
 ## Features
-- [x] Initial setup of `vueuse` and `pinia`
-- [x] Automatic creation of component files, etc. with `hygen`
-- [x] Storybook project that can take full advantage of vite&nuxt3 features
-- [x] Some generic components
-- [ ] Introduction of PWA
+:heavy_check_mark: Support [Nuxt.js v3](https://nuxt.com/)
+
+:heavy_check_mark: Support [Storybook v7](https://storybook.js.org/)
+
+:construction: Support PWA
+
+:heavy_check_mark: Support [Pinia](https://pinia.vuejs.org/)
+
+:heavy_check_mark: Support [VueUse](https://vueuse.org/)
+
+:heavy_check_mark: Provide hygen template files
+
+
+> :heavy_check_mark: = Available<br>
+> :construction: = Work in progress<br>
+> :calendar: = Planned<br>
 
 ## Dependencies / DevDependencies
 | package name | version |
