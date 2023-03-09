@@ -31,7 +31,7 @@ export const displayStatus = () => {
   /**
    * スクリーンタイプに応じてCSSを返す`<style>`v-bind向け関数
    * @example
-   * v-bind("displayTypeMixin({ sm: 'red', lp: 'blue', pc: 'green' })")
+   * v-bind("displayTypeMixin({ sm: '', lp: '', pc: '' })")
    * @param sm `sm`の場合に適用させたいCSS
    * @param lp `lp`の場合に適用させたいCSS
    * @param pc `pc`の場合に適用させたいCSS
