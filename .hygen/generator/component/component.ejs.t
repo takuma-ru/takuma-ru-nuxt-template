@@ -3,7 +3,7 @@ to: components/<%= atomic %>/<%= h.changeCase.pascal(componentName) %>/<%= h.cha
 ---
 
 <template>
-  <div id="<%= h.changeCase.camel(componentName) %>">
+  <div class="<%= h.changeCase.kebab(atomic ? atomic + ' ' + componentName : componentName) %>">
     <%= h.changeCase.camel(componentName)  %>
   </div>
 </template>
@@ -14,6 +14,8 @@ to: components/<%= atomic %>/<%= h.changeCase.pascal(componentName) %>/<%= h.cha
 export interface I<%= h.changeCase.pascal(componentName) %>Props {
   modelValue: any;
 }
+<% } -%>
+<% if (isProps && isEmit) { -%>
 
 <% } -%>
 <% if (isEmit) { -%>
@@ -29,12 +31,14 @@ export interface I<%= h.changeCase.pascal(componentName) %>Emits {
 const props = withDefaults(defineProps<I<%= h.changeCase.pascal(componentName) %>Props>(), {
   modelValue: false
 })
+<% } -%>
+<% if (isProps && isEmit) { -%>
 
 <% } -%>
 <% if (isEmit) { -%>
 const emit = defineEmits<I<%= h.changeCase.pascal(componentName) %>Emits>()
-
 <% } -%>
+
 /* -- variable(ref, reactive, computed) -- */
 <% if (isProps && isEmit) { -%>
 const vModel = useVModel(props, 'modelValue', emit)
@@ -48,7 +52,7 @@ const vModel = useVModel(props, 'modelValue', emit)
 </script>
 
 <style lang="scss" scoped>
-#<%= h.changeCase.camel(componentName)  %> {
+.<%= h.changeCase.kebab(atomic ? atomic + ' ' + componentName : componentName) %> {
 
 }
 </style>

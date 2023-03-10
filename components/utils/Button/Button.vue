@@ -1,8 +1,8 @@
 <template>
   <button
-    id="Button"
+    class="utils-button"
     :disabled="disabled"
-    :size="!isIcon && size"
+    :size="size"
     :fab="fab"
     :icon="isIcon"
     :outlined="outlined"
@@ -12,11 +12,11 @@
       <Icon
         v-if="icon"
         :icon="icon"
-        :color="!isIcon ? dependsLuminanceColor(color) : undefined"
+        :color="iconProps?.color ? iconProps.color : outlined || isIcon || color === 'transparent' ? null : dependsLuminanceColor(backgroundColor)"
         size="24px"
         :fill="props.iconProps?.fill"
-        :wght="props.iconProps?.wght"
-        :style="!isIcon && 'margin-right: 0.4rem'"
+        :wght="500"
+        :style="!isIcon && 'margin-right: 0.75rem'"
       />
       <slot />
     </div>
@@ -36,11 +36,12 @@ export interface IButtonProps {
   disabled?: boolean
   icon?: IconNameType
   iconProps?: IIconProps
-  color?: string
+  color?: 'transparent' | string
   size?: 'small' | 'normal' | 'large'
   fab?: boolean
   isIcon?: boolean
   outlined? :boolean
+  fitContent?: boolean
   to?: string
 }
 
@@ -48,7 +49,7 @@ export interface IButtonProps {
 const props = withDefaults(defineProps<IButtonProps>(), {
   icon: undefined,
   iconProps: undefined,
-  color: '#5498ff',
+  color: undefined,
   size: 'normal',
   to: undefined
 })
@@ -61,26 +62,36 @@ const colorStore = useColorStore()
 /* -- state -- */
 
 /* -- variable(ref, reactive, computed) -- */
+const backgroundColor = computed(() => {
+  return props.color ? props.color : colorStore.color.theme.text
+})
 
 /* -- function -- */
 const click = () => {
-  props.to ? navigateTo(props.to, { external: true }) : emit('click')
+  if (props.to) {
+    if (props.to.includes('https://') || props.to.includes('http://')) {
+      window.open(props.to, '_blank')
+    } else {
+      navigateTo(props.to, { external: true })
+    }
+  } else {
+    emit('click')
+  }
 }
 
 /* -- watch -- */
 /* -- life cycle -- */
-
 </script>
 
 <style lang="scss" scoped>
-#Button {
+.utils-button {
   position: relative;
-  width: auto;
+  width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
   height: 100%;
 
   border: none;
-  border-radius: 8px;
-  background-color: v-bind("props.color");
+  border-radius: 0.5em;
+  background-color: v-bind("backgroundColor");
   cursor: pointer;
   outline: none;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -99,8 +110,17 @@ const click = () => {
     text-align: center;
     font-size: 16px;
     font-weight: 500;
-    color: v-bind('dependsLuminanceColor(props.color)');
+    color: v-bind("dependsLuminanceColor(backgroundColor)");
     white-space: nowrap;
+
+    p {
+      vertical-align: text-top;
+      margin: 0px;
+    }
+
+    span {
+      line-height: 24px;
+    }
   }
 
   &:hover::before {
@@ -164,28 +184,10 @@ const click = () => {
     }
   }
 
-  &[icon = true] {
-    width: 40px;
-    height: 40px;
-
-    background-color: transparent;
-
-    &:hover::before {
-      border-radius: 25%;
-    }
-
-    .text {
-      height: calc(100% - 16px);
-
-      padding: 0px;
-      margin: 0px;
-    }
-  }
-
   &[outlined = true] {
     background-color: transparent;
 
-    border: solid 2px v-bind("colorStore.color.theme.subText");
+    border: solid 2px v-bind("backgroundColor");
     .text {
       color: v-bind("colorStore.color.theme.text");
       font-weight: 600;
@@ -193,22 +195,56 @@ const click = () => {
   }
 
   &[size = "small"] {
-    width: auto;
-    height: 24px;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
+    height: 32px;
+
+    border-radius: 0.4em;
+    &:hover::before {
+      border-radius: 0.3em;
+    }
+
+    .text {
+      font-weight: 500;
+    }
   }
 
   &[size = "normal"] {
-    width: auto;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
     height: 40px;
   }
 
   &[size = "large"] {
-    width: auto;
+    width: v-bind("props.fitContent ? 'fit-content' : 'auto'");
     height: 64px;
     border-radius: 16px;
 
     &:hover::before {
       border-radius: 16px;
+    }
+  }
+
+  &[icon = true] {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+
+    background-color: transparent;
+    border-radius: 50%;
+
+    &:hover::before {
+      border-radius: 50%;
+    }
+
+    .text {
+      height: calc(100%);
+
+      padding: 0px;
+      margin: 0px;
+    }
+
+    &[size = "small"] {
+      width: 32px;
+      height: 32px;
     }
   }
 }

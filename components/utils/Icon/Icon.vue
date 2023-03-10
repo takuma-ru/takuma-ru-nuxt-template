@@ -1,5 +1,5 @@
 <template>
-  <span class="material-symbols-rounded">
+  <span class="material-symbols-rounded notranslate">
     {{ props.icon }}
   </span>
 </template>
@@ -11,7 +11,7 @@ import { IconNameType } from '~/types/icon/IconNameType'
 export interface IIconProps {
   icon?: IconNameType
   size?: string
-  color?: string
+  color?: string | null
   fill?: boolean
   wght?: number
   grad?: number
@@ -22,7 +22,6 @@ export interface IIconProps {
 const props = withDefaults(defineProps<IIconProps>(), {
   icon: undefined,
   size: '24px',
-  color: undefined,
   fill: false,
   wght: 600,
   grad: 0,
@@ -33,8 +32,11 @@ const props = withDefaults(defineProps<IIconProps>(), {
 const colorStore = useColorStore()
 
 /* -- variable(ref, reactive, computed) -- */
+
 /* -- function -- */
+
 /* -- watch -- */
+
 /* -- life cycle -- */
 </script>
 

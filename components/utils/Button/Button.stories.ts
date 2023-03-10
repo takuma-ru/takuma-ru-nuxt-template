@@ -19,5 +19,4 @@ const Template: Story = (args, { argTypes }) => ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  default: 'Button text'
 }

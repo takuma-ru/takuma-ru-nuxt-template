@@ -7,9 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { registerSW } from 'virtual:pwa-register'
-
-registerSW()
 /* -- type, interface -- */
 
 /* -- store -- */
