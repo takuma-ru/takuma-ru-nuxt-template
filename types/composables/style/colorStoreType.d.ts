@@ -1,35 +1,27 @@
 export interface ColorGradationsInterface {
   default: string
-  lighten: {
-    [index: number]: string
-  }
-  darken: {
-    [index: number]: string
-  }
+  100: string
+  200: string
+  300: string
+  400: string
+  500: string
+  600: string
+  700: string
+  800: string
+  900: string
 }
 
 export interface ColorsInterface {
-  white: ColorGradationsInterface
-  black: ColorGradationsInterface
-  red: ColorGradationsInterface
-  blue: ColorGradationsInterface
-  yellow: ColorGradationsInterface
-  green: ColorGradationsInterface
+  primary: ColorGradationsInterface
+  neutral: ColorGradationsInterface
+  success: ColorGradationsInterface
+  info: ColorGradationsInterface
+  warn: ColorGradationsInterface
+  error: ColorGradationsInterface
   theme: {
     text: string
     subText: string
     background: string
-    lighten: {
-      [index: number]: string
-    }
-    darken: {
-      [index: number]: string
-    }
-    complementaryLighten: {
-      [index: number]: string
-    }
-    complementaryDarken: {
-      [index: number]: string
-    }
+    relativeNeutral: ColorGradationsInterface
   }
 }

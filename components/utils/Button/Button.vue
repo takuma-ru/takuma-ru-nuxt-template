@@ -159,7 +159,7 @@ const click = () => {
       left: 0px;
 
       border-radius: 8px;
-      background-color: v-bind('colorStore.color.black.lighten[2]');
+      background-color: v-bind('colorStore.color.neutral[700]');
     }
   }
 

@@ -1,5 +1,3 @@
-import { useColorStore } from '../../composables/style/colorStore'
-
 /**
  * 背景色から輝度を求め、テキストのカラーを返す関数
  * @param backgroundColor 背景色（#RRGGBB）
@@ -18,5 +16,5 @@ export const dependsLuminanceColor = (backgroundColor: string) => {
 
   const isWhite = luminance < 0.6
 
-  return isWhite ? colorStore.color.white.darken[1] : colorStore.color.black.default
+  return isWhite ? colorStore.color.neutral[100] : colorStore.color.neutral[900]
 }

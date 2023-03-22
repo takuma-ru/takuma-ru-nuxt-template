@@ -76,6 +76,6 @@ const links = ref<ILinks[]>([
 
   padding: 2em 0px;
 
-  border-right: solid 1px v-bind("colorStore.color.theme.lighten[2]");
+  border-right: solid 1px v-bind("colorStore.color.theme.relativeNeutral[200]");
 }
 </style>
