@@ -7,6 +7,7 @@
     <Button icon="face">
       テストボタン
     </Button>
+    <ColorModeButton />
   </div>
 </template>
 
