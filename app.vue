@@ -10,6 +10,7 @@
 /* -- type, interface -- */
 
 /* -- store -- */
+const colorMode = useColorMode()
 const colorStore = useColorStore()
 
 /* -- props, emit -- */
@@ -29,6 +30,13 @@ const layout = computed(() => {
 /* -- watch -- */
 
 /* -- life cycle -- */
+onBeforeMount(() => {
+  if (colorMode.value === 'dark') {
+    colorStore.setDarkTheme()
+  } else {
+    colorStore.setLightTheme()
+  }
+})
 
 </script>
 

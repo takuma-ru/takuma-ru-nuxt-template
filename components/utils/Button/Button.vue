@@ -229,10 +229,10 @@ const click = () => {
     padding: 0px;
 
     background-color: transparent;
-    border-radius: 50%;
+    border-radius: 0.5rem;
 
     &:hover::before {
-      border-radius: 50%;
+      border-radius: 0.5rem;
     }
 
     .text {
