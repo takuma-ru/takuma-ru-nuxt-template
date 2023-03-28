@@ -13,7 +13,36 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/icon_rounded.png' },
         { rel: 'apple-touch-icon', href: '/apple_touch_icon.png', sizes: '180x180' },
-        { rel: 'mask-icon', color: '#FCFCF9', href: '/mask_icon.svg' }
+        { rel: 'mask-icon', color: '#FCFCF9', href: '/mask_icon.svg' },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com'
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap'
+        },
+        {
+          rel: 'preload',
+          as: 'style',
+          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0&display=swap'
+        },
+        {
+          rel: 'stylesheet',
+          media: 'print',
+          onload: 'this.media=\'all\'',
+          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0&display=swap'
+        },
+        {
+          rel: 'manifest',
+          'data-n-head': '1',
+          'data-h-id': 'manifest',
+          href: 'manifest.webmanifest'
+        }
       ]
     }
   },
@@ -38,7 +67,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/color-mode',
-    '@nuxtjs/google-fonts',
     [
       '@pinia/nuxt',
       {
@@ -50,13 +78,6 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@vueuse/nuxt'
   ],
-
-  googleFonts: {
-    families: {
-      'Noto+Sans+JP': true,
-      'Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200': true
-    }
-  },
 
   pwa: {
     registerType: 'autoUpdate',
