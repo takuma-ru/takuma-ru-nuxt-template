@@ -16,7 +16,6 @@
         size="24px"
         :fill="props.iconProps?.fill"
         :wght="500"
-        :style="!isIcon && 'margin-right: 0.75rem'"
       />
       <slot />
     </div>
@@ -101,6 +100,7 @@ const click = () => {
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    column-gap: 0.5rem;
 
     position: relative;
     z-index: 1;

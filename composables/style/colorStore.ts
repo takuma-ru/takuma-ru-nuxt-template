@@ -97,6 +97,9 @@ export const useColorStore = defineStore('color', {
   }),
 
   actions: {
+    /**
+     * LightMode用のカラーパレットに変更する
+     */
     setLightTheme () {
       this.color.theme = {
         text: '#222625',
@@ -116,6 +119,9 @@ export const useColorStore = defineStore('color', {
         }
       }
     },
+    /**
+     * DarkMode用のカラーパレットに変更する
+     */
     setDarkTheme () {
       this.color.theme = {
         text: '#EBEFF0',

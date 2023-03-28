@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'IoT Compost Toilet',
+      title: 'takuma-ru nuxt template',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -99,7 +99,7 @@ export default defineNuxtConfig({
     },
     includeAssets: [ 'icon_rounded.png', 'apple_touch_icon.png', 'masked_icon.svg' ],
     manifest: {
-      lang: 'ja',
+      lang: 'en',
       name: 'title',
       short_name: 'title',
       description: '',
@@ -108,6 +108,11 @@ export default defineNuxtConfig({
       background_color: '#FCFCF9',
       theme_color: '#FCFCF9',
       icons: [
+        {
+          src: '/favicon.ico',
+          sizes: '16x16',
+          purpose: 'any'
+        }
         /* {
           src: '/icons/icon-72x72.png',
           type: 'image/png',
