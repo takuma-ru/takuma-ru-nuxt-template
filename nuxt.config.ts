@@ -36,12 +36,6 @@ export default defineNuxtConfig({
           media: 'print',
           onload: 'this.media=\'all\'',
           href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,200..700,0..1,0&display=swap'
-        },
-        {
-          rel: 'manifest',
-          'data-n-head': '1',
-          'data-h-id': 'manifest',
-          href: 'manifest.webmanifest'
         }
       ]
     }
@@ -49,6 +43,7 @@ export default defineNuxtConfig({
 
   components: {
     dirs: [
+      'components/pwa',
       'components/layouts',
       'components/utils'
     ]
@@ -80,12 +75,57 @@ export default defineNuxtConfig({
   ],
 
   pwa: {
-    registerType: 'autoUpdate',
-    injectRegister: 'auto',
+    client: {
+      installPrompt: true
+    },
     devOptions: {
       enabled: false
     },
+    includeAssets: [ 'icon_rounded.png', 'apple_touch_icon.png', 'masked_icon.svg' ],
+    injectRegister: 'auto',
+    injectManifest: {
+      globPatterns: [ '**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}' ],
+      globIgnores: [ 'manifest**.webmanifest' ]
+    },
+    manifest: {
+      lang: 'en',
+      name: 'title',
+      short_name: 'title',
+      description: '',
+      start_url: '/',
+      display: 'standalone',
+      background_color: '#FCFCF9',
+      theme_color: '#FCFCF9',
+      icons: [
+        {
+          src: '/favicon.ico',
+          sizes: '32x32',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-192.png',
+          type: 'image/png',
+          sizes: '192x192',
+          purpose: 'any'
+        },
+        {
+          src: '/icons/icon-512.png',
+          type: 'image/png',
+          sizes: '512x512',
+          purpose: 'any'
+        }
+      ],
+      screenshots: [
+        /* {
+          src: '/screenshots/dashboard-screenshot.png',
+          sizes: '512x962',
+          type: 'image/gif'
+        } */
+      ]
+    },
+    /* registerType: 'autoUpdate', */
     workbox: {
+      cleanupOutdatedCaches: false,
       navigateFallback: '/',
       runtimeCaching: [
         {
@@ -116,73 +156,6 @@ export default defineNuxtConfig({
             }
           }
         }
-      ]
-    },
-    includeAssets: [ 'icon_rounded.png', 'apple_touch_icon.png', 'masked_icon.svg' ],
-    manifest: {
-      lang: 'en',
-      name: 'title',
-      short_name: 'title',
-      description: '',
-      start_url: '/',
-      display: 'standalone',
-      background_color: '#FCFCF9',
-      theme_color: '#FCFCF9',
-      icons: [
-        {
-          src: '/favicon.ico',
-          sizes: '16x16',
-          purpose: 'any'
-        }
-        /* {
-          src: '/icons/icon-72x72.png',
-          type: 'image/png',
-          sizes: '72x72',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-128x128.png',
-          type: 'image/png',
-          sizes: '128x128',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-144x144.png',
-          type: 'image/png',
-          sizes: '144x144',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-152x152.png',
-          type: 'image/png',
-          sizes: '152x152',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-192x192.png',
-          type: 'image/png',
-          sizes: '192x192',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-384x384.png',
-          type: 'image/png',
-          sizes: '384x384',
-          purpose: 'any'
-        },
-        {
-          src: '/icons/icon-512x512.png',
-          type: 'image/png',
-          sizes: '512x512',
-          purpose: 'any'
-        } */
-      ],
-      screenshots: [
-        /* {
-          src: '/screenshots/dashboard-screenshot.png',
-          sizes: '512x962',
-          type: 'image/gif'
-        } */
       ]
     }
   }

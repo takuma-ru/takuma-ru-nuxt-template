@@ -14043,7 +14043,7 @@ vite-plugin-eslint@^1.8.1:
     "@types/eslint" "^8.4.5"
     rollup "^2.77.2"
 
-vite-plugin-pwa@^0.14.4, vite-plugin-pwa@^0.14.6:
+vite-plugin-pwa@^0.14.4:
   version "0.14.6"
   resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.14.6.tgz#71d77a9e39a3b3ccc265aa5e4d920d1fdd661461"
   integrity sha512-3mqbkjvSF89pCSZyXAbv6AO4gYKYZel0rcpBgWOWqEupoBOZF9oHDdgHc+FgjmvQXxuU2k9aEFOfRCMGorV+4Q==
