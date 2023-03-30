@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <VitePwaManifest />
+    <InstallPrompt />
     <NuxtLayout :name="layout">
       <NuxtPage />
     </NuxtLayout>
