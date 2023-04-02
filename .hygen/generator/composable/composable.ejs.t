@@ -1,21 +1,15 @@
 ---
 to: composables/<%= atomic %>/<%= h.changeCase.camel(storeName) %>Store.ts
 ---
-export const use<%= h.changeCase.pascal(storeName) %>Store = defineStore('<%= h.changeCase.camel(storeName) %>', () => {
-  /* -- state -- */
-  const <%= h.changeCase.camel(storeName) %> = ref(false)
+import { I<%= h.changeCase.pascal(storeName) %>StoreState } from '~/types/composables/utils/<%= h.changeCase.camel(storeName) %>Store'
 
-  /* -- mutation -- */
-  const <%= h.changeCase.camel(storeName) %>Mutation = () => {
-    <%= h.changeCase.camel(storeName) %>.value = true
-  }
+export const use<%= h.changeCase.pascal(storeName) %>Store = defineStore('<%= h.changeCase.camel(storeName) %>', {
+  state: (): I<%= h.changeCase.pascal(storeName) %>StoreState => ({
+  }),
 
-  /* -- action -- */
+  getters: {
+  },
 
-  /* -- other -- */
-
-  return {
-    <%= h.changeCase.camel(storeName) %>: readonly(<%= h.changeCase.camel(storeName) %>),
-    <%= h.changeCase.camel(storeName) %>Mutation
+  actions: {
   }
 })
