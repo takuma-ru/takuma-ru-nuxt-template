@@ -14,7 +14,7 @@
           :to="link.path"
           :icon-props="{
             fill: route.path === link.path ? true : false,
-            color: route.path === link.path ? colorStore.color.theme.text : colorStore.color.theme.text
+            color: route.path === link.path ? colorStore.$state.color.theme.text : colorStore.$state.color.theme.text
           }"
         />
       </div>
@@ -74,7 +74,7 @@ const links = ref<ILinks[]>([
 
   padding: 0px 2em;
 
-  border-top: solid 1px v-bind("colorStore.color.theme.relativeNeutral[200]");
+  border-top: solid 1px v-bind("colorStore.$state.color.theme.relativeNeutral[200]");
 
   .buttons {
     display: flex;

@@ -1,12 +1,3 @@
-<template>
-  <div
-    v-if="$pwa?.showInstallPrompt && !$pwa?.needRefresh"
-    class="pwa-install-prompt"
-  >
-    
-  </div>
-</template>
-
 <script lang="ts" setup>
 /* -- type, interface -- */
 

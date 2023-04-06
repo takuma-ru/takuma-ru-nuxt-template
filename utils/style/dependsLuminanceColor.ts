@@ -16,5 +16,5 @@ export const dependsLuminanceColor = (backgroundColor: string) => {
 
   const isWhite = luminance < 0.6
 
-  return isWhite ? colorStore.color.neutral[100] : colorStore.color.neutral[900]
+  return isWhite ? colorStore.$state.color.neutral[100] : colorStore.$state.color.neutral[900]
 }

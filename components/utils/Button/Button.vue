@@ -62,7 +62,7 @@ const colorStore = useColorStore()
 
 /* -- variable(ref, reactive, computed) -- */
 const backgroundColor = computed(() => {
-  return props.color ? props.color : colorStore.color.theme.text
+  return props.color ? props.color : colorStore.$state.color.theme.text
 })
 
 /* -- function -- */
@@ -159,7 +159,7 @@ const click = () => {
       left: 0px;
 
       border-radius: 8px;
-      background-color: v-bind('colorStore.color.neutral[700]');
+      background-color: v-bind('colorStore.$state.color.neutral[700]');
     }
   }
 
@@ -189,7 +189,7 @@ const click = () => {
 
     border: solid 2px v-bind("backgroundColor");
     .text {
-      color: v-bind("colorStore.color.theme.text");
+      color: v-bind("colorStore.$state.color.theme.text");
       font-weight: 600;
     }
   }

@@ -70,8 +70,8 @@ html, body {
   padding: 1rem 3rem;
 
   box-sizing: border-box;
-  background-color: v-bind("colorStore.color.theme.background");
-  color: v-bind("colorStore.color.theme.text");
+  background-color: v-bind("colorStore.$state.color.theme.background");
+  color: v-bind("colorStore.$state.color.theme.text");
 }
 
 .error {
@@ -81,7 +81,7 @@ html, body {
 
     column-gap: 0.25rem;
     font-size: 0.8rem;
-    color: v-bind("colorStore.color.theme.subText");
+    color: v-bind("colorStore.$state.color.theme.subText");
   }
 
   .title {
