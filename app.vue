@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <VitePwaManifest />
-    <InstallPrompt />
+    <SnackBarWrapper />
     <NuxtLayout :name="layout">
       <NuxtPage />
     </NuxtLayout>
@@ -47,12 +47,35 @@ html, body {
   margin: 0px;
 
   font-family: 'Noto Sans JP', sans-serif;
+  /* overscroll-behavior-y: none;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: red;
+    background-color: v-bind("colorMode.value === 'dark' ? '#222625' :'#EBEFF0'");
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  } */
 }
 
 #app {
   height: 100vh;
   width: 100vw;
-  background-color: v-bind("colorStore.color.theme.background");
-  color: v-bind("colorStore.color.theme.text");
+  background-color: v-bind("colorStore.$state.color.theme.background");
+  color: v-bind("colorStore.$state.color.theme.text");
 }
 </style>
