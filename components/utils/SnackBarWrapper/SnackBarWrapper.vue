@@ -1,7 +1,10 @@
 <template>
-  <div
+  <transition-group
     ref="snackBarWrapper"
+    name="snack-bar-transition"
+    appear
     class="utils-snack-bar-wrapper"
+    tag="div"
   >
     <Button
       @click="snackBarStore.addSnackBar({
@@ -17,46 +20,48 @@
       v-for="(value, i) in snackBarStore.$state.values"
       :key="i"
     >
-      <transition name="snack-bar-transition" appear>
+      <div
+        v-if="value.isShow"
+        :key="i"
+        class="snack-bar"
+        :type="value.type"
+        :style="{
+          backgroundColor: icon(value.type).background,
+          color: icon(value.type).text,
+          borderColor: icon(value.type).cover
+        }"
+      >
         <div
-          v-if="value.isShow"
-          class="snack-bar"
-          :type="value.type"
+          class="icon"
           :style="{
-            backgroundColor: icon(value.type).background,
-            color: icon(value.type).text
+            backgroundColor: icon(value.type).cover
           }"
         >
-          <div
-            class="icon"
-          >
-            <Icon
-              :icon="icon(value.type).iconName"
-              :color="icon(value.type).cover"
-              fill
-            />
-          </div>
-          <div
-            class="contents"
-            v-text="value.description"
+          <Icon
+            :icon="icon(value.type).iconName"
+            :color="icon(value.type).background"
           />
-          <div
-            class="actions"
-          >
-            <Button
-              is-icon
-              icon="close"
-              color="transparent"
-              :icon-props="{
-                color: icon(value.type).text
-              }"
-              @click="value.isShow = false"
-            />
-          </div>
         </div>
-      </transition>
+        <div
+          class="contents"
+          v-text="value.description"
+        />
+        <div
+          class="actions"
+        >
+          <Button
+            is-icon
+            icon="close"
+            color="transparent"
+            :icon-props="{
+              color: icon(value.type).text
+            }"
+            @click="value.isShow = false"
+          />
+        </div>
+      </div>
     </template>
-  </div>
+  </transition-group>
 </template>
 
 <script lang="ts" setup>
@@ -104,7 +109,7 @@ const icon = (type: IValue['type']): ISnackBarColor => {
         iconName: 'notifications',
         background: colorStore.$state.color.primary[600],
         text: colorStore.$state.color.neutral[900],
-        cover: colorStore.$state.color.primary[900]
+        cover: colorStore.$state.color.primary[800]
       }
     case 'pwa-install':
       return {
@@ -166,17 +171,20 @@ const icon = (type: IValue['type']): ISnackBarColor => {
 
     border-radius: 0.5rem;
     filter: drop-shadow(0px 16px 40px rgba(34, 38, 37, 0.2));
-    overflow: hidden;
+    /* border: 4px solid; */
 
     .icon {
       display: grid;
       place-items: center;
 
       width: 100%;
+      height: 100%;
+
+      border-radius: 0.5rem 0 0 0.5rem;
     }
 
     .contents {
-      padding: 8px;
+      padding: 0.5rem 1rem;
 
       overflow-wrap: break-word;
     }
@@ -188,6 +196,10 @@ const icon = (type: IValue['type']): ISnackBarColor => {
 }
 
 .snack-bar-transition {
+  &-move {
+    transition: all 0.25s cubic-bezier(.25,.8,.25,1);
+  }
+
   &-enter {
     &-from {
       right: -684px !important;
@@ -200,11 +212,13 @@ const icon = (type: IValue['type']): ISnackBarColor => {
       right: 0px !important;
     }
   }
+
   &-leave {
     &-from {
       right: 0px !important;
     }
     &-active {
+      position: absolute;
       well-change: right;
       transition: all 0.25s cubic-bezier(.25,.8,.25,1);
     }
