@@ -51,5 +51,9 @@
     "firebase": "^9.14.0",
     "pinia": "^2.0.25",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "3.5.0"
   }
 }

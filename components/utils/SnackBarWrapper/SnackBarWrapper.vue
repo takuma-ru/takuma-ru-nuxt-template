@@ -96,13 +96,17 @@ const icon = (type: IValue['type']): ISnackBarColor => {
       }
     case 'info':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
     case 'error':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
     case 'primary':
       return {
@@ -113,23 +117,31 @@ const icon = (type: IValue['type']): ISnackBarColor => {
       }
     case 'pwa-install':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
     case 'pwa-update':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
     case 'success':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
     case 'warn':
       return {
-        name: 'notifications',
-        color: colorStore.$state.color.theme.relativeNeutral[900]
+        iconName: 'notifications',
+        background: colorStore.$state.color.primary[600],
+        text: colorStore.$state.color.neutral[900],
+        cover: colorStore.$state.color.primary[800]
       }
   }
 }
