@@ -4888,6 +4888,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "@types/uuid@npm:9.0.1"
+  checksum: c472b8a77cbeded4bc529220b8611afa39bd64677f507838f8083d8aac8033b1f88cb9ddaa2f8589e0dcd2317291d0f6e1379f82d5ceebd6f74f3b4825288e00
+  languageName: node
+  linkType: hard
+
 "@types/web-bluetooth@npm:^0.0.16":
   version: 0.0.16
   resolution: "@types/web-bluetooth@npm:0.0.16"
@@ -16608,6 +16615,7 @@ __metadata:
     "@storybook/testing-library": ^0.0.13
     "@storybook/theming": ^6.5.13
     "@storybook/vue3": ^6.5.13
+    "@types/uuid": ^9.0.1
     "@typescript-eslint/eslint-plugin": ^5.42.0
     "@typescript-eslint/parser": ^5.42.0
     "@vite-pwa/nuxt": ^0.0.7
@@ -16625,6 +16633,7 @@ __metadata:
     typescript: ^4.9.3
     unplugin-auto-import: ^0.11.5
     unplugin-vue-components: ^0.22.11
+    uuid: ^9.0.0
     vite-plugin-eslint: ^1.8.1
     vue-loader: ^16.8.3
   languageName: unknown
@@ -18944,6 +18953,15 @@ __metadata:
   bin:
     uuid: ./bin/uuid
   checksum: 58de2feed61c59060b40f8203c0e4ed7fd6f99d42534a499f1741218a1dd0c129f4aa1de797bcf822c8ea5da7e4137aa3673431a96dae729047f7aca7b27866f
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "uuid@npm:9.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 8dd2c83c43ddc7e1c71e36b60aea40030a6505139af6bee0f382ebcd1a56f6cd3028f7f06ffb07f8cf6ced320b76aea275284b224b002b289f89fe89c389b028
   languageName: node
   linkType: hard
 

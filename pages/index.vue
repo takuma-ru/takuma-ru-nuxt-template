@@ -8,6 +8,16 @@
       テストボタン
     </Button>
     <ColorModeButton />
+    <Button
+      @click="snackBarStore.sendNotification({
+        description: new Date().toString(),
+        isShow: true,
+        isShowClose: true,
+        type: 'pwa-install'
+      })"
+    >
+      Add
+    </Button>
   </div>
 </template>
 
@@ -17,6 +27,7 @@
 /* -- store -- */
 
 /* -- props, emit -- */
+const snackBarStore = useSnackBarStore()
 
 /* -- variable(ref, reactive, computed) -- */
 const { sm, lp, pc, displayType, displayTypeMixin } = displayStatus()

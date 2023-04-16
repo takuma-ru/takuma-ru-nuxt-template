@@ -6,61 +6,46 @@
     class="utils-snack-bar-wrapper"
     tag="div"
   >
-    <Button
-      @click="snackBarStore.addSnackBar({
-        description: 'test',
-        isShow: true,
-        isShowClose: true,
-        type: 'primary'
-      })"
-    >
-      Add
-    </Button>
-    <template
-      v-for="(value, i) in snackBarStore.$state.values"
-      :key="i"
+    <div
+      v-for="value in snackBarStore.$state.activeValues"
+      :key="value.uuid"
+      class="snack-bar"
+      :type="value.type"
+      :style="{
+        backgroundColor: icon(value.type).background,
+        color: icon(value.type).text,
+        borderColor: icon(value.type).cover
+      }"
     >
       <div
-        v-if="value.isShow"
-        :key="i"
-        class="snack-bar"
-        :type="value.type"
+        class="icon"
         :style="{
-          backgroundColor: icon(value.type).background,
-          color: icon(value.type).text,
-          borderColor: icon(value.type).cover
+          backgroundColor: icon(value.type).cover
         }"
       >
-        <div
-          class="icon"
-          :style="{
-            backgroundColor: icon(value.type).cover
-          }"
-        >
-          <Icon
-            :icon="icon(value.type).iconName"
-            :color="icon(value.type).background"
-          />
-        </div>
-        <div
-          class="contents"
-          v-text="value.description"
+        <Icon
+          :icon="icon(value.type).iconName"
+          :color="icon(value.type).background"
         />
-        <div
-          class="actions"
-        >
-          <Button
-            is-icon
-            icon="close"
-            color="transparent"
-            :icon-props="{
-              color: icon(value.type).text
-            }"
-            @click="value.isShow = false"
-          />
-        </div>
       </div>
-    </template>
+      <div
+        class="contents"
+        v-text="value.description"
+      />
+      <div
+        class="actions"
+      >
+        <Button
+          is-icon
+          icon="close"
+          color="transparent"
+          :icon-props="{
+            color: icon(value.type).text
+          }"
+          @click="snackBarStore.deactivateNotification(value.uuid)"
+        />
+      </div>
+    </div>
   </transition-group>
 </template>
 
@@ -90,23 +75,23 @@ const icon = (type: IValue['type']): ISnackBarColor => {
     case 'custom':
       return {
         iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
+        background: colorStore.$state.color.primary[200],
         text: colorStore.$state.color.neutral[900],
         cover: colorStore.$state.color.primary[900]
       }
     case 'info':
       return {
-        iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
+        iconName: 'info',
+        background: colorStore.$state.color.info[200],
         text: colorStore.$state.color.neutral[900],
-        cover: colorStore.$state.color.primary[800]
+        cover: colorStore.$state.color.info[800]
       }
     case 'error':
       return {
-        iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
+        iconName: 'error',
+        background: colorStore.$state.color.error[400],
         text: colorStore.$state.color.neutral[900],
-        cover: colorStore.$state.color.primary[800]
+        cover: colorStore.$state.color.error[600]
       }
     case 'primary':
       return {
@@ -117,28 +102,28 @@ const icon = (type: IValue['type']): ISnackBarColor => {
       }
     case 'pwa-install':
       return {
-        iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
-        text: colorStore.$state.color.neutral[900],
-        cover: colorStore.$state.color.primary[800]
+        iconName: 'install_desktop',
+        background: colorStore.$state.color.theme.relativeNeutral[500],
+        text: colorStore.$state.color.theme.background,
+        cover: colorStore.$state.color.theme.relativeNeutral[900]
       }
     case 'pwa-update':
       return {
         iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
-        text: colorStore.$state.color.neutral[900],
+        background: colorStore.$state.color.primary[100],
+        text: colorStore.$state.color.theme.background,
         cover: colorStore.$state.color.primary[800]
       }
     case 'success':
       return {
-        iconName: 'notifications',
-        background: colorStore.$state.color.primary[600],
+        iconName: 'check_circle',
+        background: colorStore.$state.color.success[200],
         text: colorStore.$state.color.neutral[900],
-        cover: colorStore.$state.color.primary[800]
+        cover: colorStore.$state.color.success[800]
       }
     case 'warn':
       return {
-        iconName: 'notifications',
+        iconName: 'warning',
         background: colorStore.$state.color.primary[600],
         text: colorStore.$state.color.neutral[900],
         cover: colorStore.$state.color.primary[800]
@@ -149,14 +134,6 @@ const icon = (type: IValue['type']): ISnackBarColor => {
 /* -- watch -- */
 
 /* -- life cycle -- */
-/* onMounted(() => {
-  snackBarStore.addSnackBar({
-    description: 'test',
-    isShow: true,
-    isShowClose: true,
-    type: 'primary'
-  })
-}) */
 </script>
 
 <style lang="scss" scoped>
@@ -208,10 +185,6 @@ const icon = (type: IValue['type']): ISnackBarColor => {
 }
 
 .snack-bar-transition {
-  &-move {
-    transition: all 0.25s cubic-bezier(.25,.8,.25,1);
-  }
-
   &-enter {
     &-from {
       right: -684px !important;
@@ -238,5 +211,13 @@ const icon = (type: IValue['type']): ISnackBarColor => {
       right: -684px !important;
     }
   }
+
+  &-move {
+    transition: all 0.25s cubic-bezier(.25,.8,.25,1);
+  }
+
+  /* &-move:not(.snack-bar-transition-leave-active){
+    transition-delay: 1s;
+  } */
 }
 </style>

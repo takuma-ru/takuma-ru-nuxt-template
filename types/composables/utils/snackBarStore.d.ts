@@ -2,10 +2,12 @@ import { IconNameType } from '~/types/icon/IconNameType'
 import { IButtonProps, IButtonEmits } from '~/components/utils/Button/Button.vue'
 
 export interface ISnackBarStoreState {
-  values: Array<IValue>
+  activeValues: Array<IValue>
+  inactiveValues: Array<IValue>
 }
 
 export interface IValue {
+  uuid: string
   /**
    * Configure buttons for actions to be displayed in the snack bar.
    */
@@ -42,3 +44,5 @@ export interface IValue {
    */
   type: 'success' | 'warn' | 'error' | 'info' | 'primary' | 'pwa-install' | 'pwa-update' | 'custom'
 }
+
+export type IArgValue = Omit<IValue, "uuid">
